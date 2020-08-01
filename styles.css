@@ -1,0 +1,107 @@
+html, body{
+    margin: 0px;
+    padding: 0px;
+    overflow: hidden;
+}
+
+.s1{
+    /*https://www.youtube.com/watch?v=fBRzD6dwJfw*/
+    height: 100vh;
+    width: 100%;
+    position: relative;
+    background: linear-gradient(-45deg, #E10000 , #CD1212, #740000,#440202, #940000,#5A0000);
+    background-size: 400%, 400%;
+    animation: change 2.5s ease-out;
+}
+.s2{
+    height: 100vh;
+    width: 100%;
+    position: relative;
+    background: linear-gradient(-45deg, #353434, #141414);
+}
+.s3{
+    height: 100vh;
+    width: 100%;
+    position: relative;
+    background: #520202;
+}
+.description{
+    font-size: 45px;
+    color: white;
+    text-align: center;
+    align-items: center;
+    top: 50%;
+    left: 50%;
+    transform: translate(-120%,120%);
+    position: absolute;
+    background: linear-gradient(to left, #c9c9c9,#faecec);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+}
+.menu{
+    font-size: 45px;
+    color: white;
+    text-align: center;
+    align-items: center;
+    top: 10%;
+    left: 50%;
+    transform: translate(-50%,-50%);
+    position: absolute;
+    background: linear-gradient(to left, #c9c9c9,#faecec);
+    -webkit-backsground-clip: text;
+    -webkit-text-fill-color: transparent;
+}
+
+.table{
+    height: 30px;
+    width: 400px;
+    background: #631d0c;
+    position: absolute;
+    top: 70vh;
+    left: 50%;
+    transform: skew(-70deg);
+}
+
+.passTheNext{
+    height: 0px;
+    width: 0px;
+    background-color: #000000;
+    animation: getBig 1s;
+    top: 0px;
+    left: 0px;
+    position: fixed;
+    z-index: 1;
+}
+
+@keyframes change{
+    /*https://www.youtube.com/watch?v=fBRzD6dwJfw*/
+    0%{
+        background-position: 100% 50%;
+    }
+    100%{
+        background-position: 0 50%;
+    }
+}
+
+@keyframes getBig{
+    0%{
+        top: 50%;
+        left: 50%;
+        height: 1px;
+        width: 1px;
+    }
+    50%{
+        top: -10px;
+        left: -15px;
+        height: 102vh;
+        width: 102%;
+        opacity: 1;
+    }
+    100%{
+        top: 50%;
+        left: 50%;
+        height: 0px;
+        width: 0px;
+        opacity: 0;
+    }
+}
