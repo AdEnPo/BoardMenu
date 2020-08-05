@@ -10,6 +10,13 @@ const sElement2 = document.querySelector('#s2>div.s2');
 const sElement3 = document.querySelector('#s3>div.s3');
 const sElement4 = document.querySelector('#s4>div.s2');
 const menuText = document.querySelectorAll('div.s2>h1.menu');
+const menuTable = document.querySelectorAll('.menuTable>tbody');
+
+var menusItemsArray = [['asdf',15],['zxcv',10],['wwww',5],
+                       ['fgfg',25],['vbnvn',20],['xxaass',35],
+                       ['asdf',15],['zxcv',10],['wwww',5],
+                       ['fgfg',25],['vbnvn',20],['xxaass',35]];
+console.log(menusItemsArray);
 
 function menuAnimation(number) {
     // https://www.youtube.com/watch?v=GUEB9FogoP8
@@ -32,12 +39,37 @@ function menuAnimation(number) {
             timer = null;
             setTimeout(()=>{    
                 menuText[number].textContent = tmpText;
+                menuItems(number);
             },500);
         }
     },60);
+    
 }
 
+function menuItems(number){
+    for (let i = 0; i < menusItemsArray.length; i++) {
+        menuTable[number].innerHTML+='<tr>'
+                                +'<td class="float-right">'+ menusItemsArray[i][0]+'</td>'
+                                +'<td class="float-left">'+ menusItemsArray[i][1]+' TL</td>'
+                            +'</tr>';   
+    }
 
+    let char = 0;
+    let timer = setInterval(()=>{
+        const span = menuTable[number].querySelectorAll("td")[char];
+        span.classList.add("slide");
+        char++;
+        if (char === menusItemsArray.length) {
+            clearInterval(timer);
+            timer = null;
+            //if(menusItemsArray.length == 12){}else{
+                setTimeout(()=>{
+                    menuTable[number].innerHTML='';
+                },2000);
+            //}
+        }
+    },60);
+}
 
 var sectionNumber=2;
 var interval = setInterval(()=>{
