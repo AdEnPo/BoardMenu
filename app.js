@@ -10,10 +10,11 @@ const sElement24 = document.querySelectorAll('div.s2');
 const sElement3 = document.querySelector('div.s3');
 const menuText = document.querySelectorAll('div.s2>h1.menu');
 const menuTable = document.querySelectorAll('.menuTable>tbody');
-const descText = document.querySelectorAll('h1>.description');
+const foodNameText = document.querySelectorAll('h1>.food');
 const foodImage = document.querySelectorAll('img.images');
-const desc = document.querySelectorAll('h1.description');
+const foodName = document.querySelectorAll('h1.food');
 const price = document.querySelectorAll('h2.price');
+const fooddesc = document.querySelectorAll('p.theFoodIs');
 
 const TIMEforSCREEN = 5000;
 
@@ -47,19 +48,16 @@ function menuAnimation(number) {
             setTimeout(()=>{    
                 menuText[number].textContent = tmpText;
                 menuItems(number);
-                setTimeout(()=>{linesOfMenu(number)},2000);
-            },500);
-            
+            },500);      
         }
-    },60);
-    
+    },60); 
 }
 
 function menuItems(number){
     for (let i = 0; i < menusItemsArray.length; i++) {
         menuTable[number].innerHTML+='<tr>'
-                                +'<td class="float-right">'+ menusItemsArray[i][0]+'</td>'
-                                +'<td class="float-left">'+ menusItemsArray[i][1]+' TL</td>'
+                                +'<td class="float-left">'+ menusItemsArray[i][0]+'</td>'
+                                +'<td class="float-right">'+ menusItemsArray[i][1]+' TL</td>'
                             +'</tr>';
     }
 
@@ -81,114 +79,60 @@ function menuItems(number){
     },60);
 }
 
-function linesOfMenu(number) {
-    
-    sElement24[number].innerHTML += "<div class='lines'></div>"+
-                                    "<div class='lines'></div>";
-
-    lines = document.querySelectorAll('div.lines');
-    leftLine = lines[0];
-    rightLine = lines[1];
-    leftLine.classList.add('leftline');
-    rightLine.classList.add('rightline');
-    
-    const time = 1500; 
-   /* const styles = {
-        position: 'absolute', bottom: '15px',
-        height: '10px', width: '0px',
-        left: '50%', background: '#ffffff'
-    }
-    //https://attacomsian.com/blog/javascript-add-multiple-css-styles
-    Object.assign(leftLine.style, styles);
-    Object.assign(rightLine.style, styles);*/
-
-    leftLine.animate([
-        { width: '0px', left: '50%'},
-        { width: '900px', left: '75px'},
-        { width: '10px', left: '75px',height: '10px'},
-        { height: '900px', left: '75px', bottom: '15px'},
-        { left: '75px', bottom: '15px'},
-        { height: '10px', left:'75px', width:'10px', bottom: '925px'},
-        { left:'75px', width:'800px', top: '145px'},
-        { left:'825px', width:'50px', top: '145px'},
-        { left:'825px', width:'50px', top: '145px'},
-        {left:'825px', width:'50px', top: '145px'}
-    ],time);
-    rightLine.animate([
-        { width: '0px', right: '50%'},
-        { width: '900px', left: '960px'},
-        { width: '10px', left: '1845px',height: '10px'},
-        { height: '900px', left: '1845px', bottom: '15px'},
-        { left: '1845px', bottom: '15px'},
-        { height: '10px', left:'1845px', width:'10px', bottom: '925px'},
-        { left:'1040px', width:'815px', top: '145px'},
-        { left:'1040px', width:'50px', top: '145px'},
-        { left:'1040px', width:'50px', top: '145px'},
-        { left:'1040px', width:'50px', top: '145px'} 
-    ],time);
-    
-    setTimeout(()=>{
-        for (let i = 0; i < lines.length; i++) {
-            lines[i].style.width = '50px';
-            lines[i].style.height='10px';
-            lines[i].style.top='145px';
-        }
-        leftLine.style.left='825px';
-        rightLine.style.left='1040px';
-    },time-10);
-    setTimeout(()=>{
-        sElement24[number].removeChild(lines[0]);
-        sElement24[number].removeChild(lines[1]);
-    },time+1000);
-}
-
-function descInAnimation(number) {
-    desc[number].animate([
-        { opacity: 0, top: '6%' },
-        { opacity: 1, top: '8%'},
-        { opacity: 1, top: '10%'}
+function foodNameInAnimation(number) {
+    foodName[number].animate([
+        { opacity: 0, top: '11%' },
+        { opacity: 1, top: '13%'},
+        { opacity: 1, top: '15%'}
     ],500);
-    desc[number].style.opacity = 1;
+    foodName[number].style.opacity = 1;
     foodInAnimation(number);
-    priceAnimation(number);
+    setTimeout(()=>{priceAnimation(number);},500);
+    foodDesc(number);
     price[number].style.opacity = 0;
-
 }
 
 function priceAnimation(number) {
-    setTimeout(()=>{
-        price[number].animate([
-            { opacity: 0, top: '19%' },
-            { opacity: 1, top: '21%'},
-            { opacity: 1, top: '23%'}
-        ],500);
-        price[number].style.opacity = 1;
-    },500);
-    
+    price[number].animate([
+        { opacity: 0, transform: 'rotate(30deg)' },
+        { transform: 'rotate(120deg)'},
+        { transform: 'rotate(210deg)'},
+        { transform: 'rotate(300deg)'},
+        { opacity: 1, transform: 'rotate(390deg)'}
+    ],500);
+    price[number].style.opacity = 1;   
 }
 
+function foodDesc(number) {
+    fooddesc[number].animate([
+        { opacity: 0, left: '11%' },
+        { opacity: 1, left: '13%'},
+        { opacity: 1, left: '15%'}
+    ],500);
+    fooddesc[number].style.opacity = 1;
+}
 
 function foodInAnimation(number) {
+    height = foodImage[number].offsetHeight;
     //https://developers.google.com/web/fundamentals/design-and-ux/animations/css-vs-javascript
     foodImage[number].animate([
         { height: '0%', left: '110%' },
-        { height: '10%', left: '100%' },
-        { height: '20%', left: '90%' },
-        { height: '30%', left: '80%' },
-        { height: '40%', left: '70%' },
-        { height: '50%', left: '50%', top: '40vh' }, 
-        { height: '55%', top: '35vh' },
-        { height: '50%', top: '40vh' }, 
-        { height: '45%', top: '45vh' }, 
-        { height: '50%',  top: '40vh' }, 
-        { height: '50%', left: '50%', top: '40vh'}
+        { height: height+'px', left: '100%' },
+        { height: height+'px', left: '90%' },
+        { height: height+'px', left: '80%' },
+        { height: height+'px', left: '70%' },
+        { height: height+'px', left: '50%', top: '40vh' }, 
+        { height: height+55+'px', top: '35vh' },
+        { height: height+'px', top: '40vh' }, 
+        { height: height-55+'px', top: '45vh' }, 
+        { height: height+'px',  top: '40vh' }, 
+        { height: height+'px', left: '50%', top: '40vh'}
         //15 steps
     ],1000);
     foodImage[number].style.left = '50%';
 }
 
-
-descInAnimation(0);
+foodNameInAnimation(0);
 
 var sectionNumber=2;
 var interval = setInterval(()=>{
@@ -196,7 +140,7 @@ var interval = setInterval(()=>{
     switch (sectionNumber) {
         case 1:
             section1.scrollIntoView(true);
-            descInAnimation(0);
+            foodNameInAnimation(0);
             break;
         case 2:
             section2.scrollIntoView(true);
@@ -204,7 +148,7 @@ var interval = setInterval(()=>{
             break;
         case 3:
             section3.scrollIntoView(true);
-            descInAnimation(1);
+            foodNameInAnimation(1);
             break;
         case 4:
             section4.scrollIntoView(true);

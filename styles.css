@@ -22,7 +22,6 @@ html, body{
  /*   background: linear-gradient(-90deg, #141414,#202020, #141414,#141414,#202020,#141414);*/
     background: linear-gradient(-90deg, #691c00,#a02b00, #c23400,#c23400,#a02b00,#691c00);
     z-index: -2;
-
 }
 .s3{
     height: 100vh;
@@ -32,14 +31,14 @@ html, body{
     z-index: -2;
 
 }
-.description{
-    font-size: 45px;
+.food{
+    font-size: 150px;
     color: white;
     text-align: center;
     align-items: center;
-    top: 10%;
+    top: 15%;
     left: 50%;
-    transform: translate(-120%,120%);
+    transform: translate(-90%,-50%);
     position: absolute;
     opacity: 0;
    /* background: linear-gradient(to left, #c9c9c9,#faecec);
@@ -48,27 +47,32 @@ html, body{
 }
 
 .price{
-    font-size: 40px;
+    font-size: 60px;
     color: white;
     text-align: center;
     align-items: center;
-    top: 23%;
-    left: 10%;
+    top: 29%;
+    left: 77%;
+    padding: 20px;
     transform: translate(1em,120%);
+    transform: rotate(30deg);
     position: absolute;
+    background-color: #dd9700;
+    border-radius: 50% ;
     opacity: 0;
 }
-.explaining{
+.theFoodIs{
     position: absolute;
     color: #ffffff;
     top: 50%;
     left: 15%;
-    width: 400px;
-    font-size: 20px;
-
+    width: 600px;
+    font-size: 50px;
+    font-style: italic;
+    opacity: 0;
 }
 .menu{
-    font-size: 45px;
+    font-size: 100px;
     color: #ffffff;
     text-align: center;
     align-items: center;
@@ -100,32 +104,35 @@ span.fade{
     /*left: 50%;*/
     left: 110%;
 }
+
 .menuTable{
     background: transparent;
     border-collapse: collapse;
     position: absolute;
-    font-size: 2em;
-    min-width: 400px;
+    width: 1000px;
     left: 50%;
     top: 25%;
     transform: translate(-50%);
     color: white;
     align-items: center;
+    font-size: 45px;
 }
-.float-right{
+
+.float-left{
     opacity: 0;
     text-align: left;
-    width: 48%;
-    padding-right: 10px;
+    padding-left: 30px;
+    padding-bottom: 20px;
     border-right: solid 2px white;
     transition: all 1s ease;
     transform: translateX(200px);
 }
-.float-left{
+.float-right{
     opacity: 0;
     text-align: right;
-    width: 48%;
-    padding-left: 10px;
+    padding-right: 50px;
+    padding-left: 50px;
+    padding-bottom: 20px;
     border-left: solid 2px white;
     transition: all 1s ease;
     transform: translateX(-200px);
@@ -140,15 +147,6 @@ span.fade{
     bottom: 0px;
     width: 100%;
     z-index: -1;
-}
-
-.lines {
-    position: absolute;
-    bottom: 15px;
-    height: 10px;
-    width: 0px;
-    left: 50%;
-    background: #ffffff;  
 }
 
 .passTheNext{
