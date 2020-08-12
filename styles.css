@@ -2,6 +2,7 @@ html, body{
     margin: 0px;
     padding: 0px;
     /*overflow: hidden;*/
+    overflow-x: hidden;
 }
 
 .s1{
@@ -9,38 +10,66 @@ html, body{
     height: 100vh;
     width: 100%;
     position: relative;
-    background: linear-gradient(-45deg, #E10000 , #CD1212, #740000,#440202, #940000,#5A0000);
+    background: linear-gradient(-45deg, #5A0000 , #940000, #440202,#440202, #940000,#5A0000);
     background-size: 400%, 400%;
-    animation: change 2.5s ease-out;
+    animation: change 5s infinite ease;
+    z-index: -2;
 }
 .s2{
     height: 100vh;
     width: 100%;
     position: relative;
-    background: linear-gradient(-90deg, #141414,#202020, #141414,#141414,#202020,#141414);
+ /*   background: linear-gradient(-90deg, #141414,#202020, #141414,#141414,#202020,#141414);*/
+    background: linear-gradient(-90deg, #691c00,#a02b00, #c23400,#c23400,#a02b00,#691c00);
+    z-index: -2;
+
 }
 .s3{
     height: 100vh;
     width: 100%;
     position: relative;
     background: #520202;
+    z-index: -2;
+
 }
 .description{
     font-size: 45px;
     color: white;
     text-align: center;
     align-items: center;
-    top: 50%;
+    top: 10%;
     left: 50%;
     transform: translate(-120%,120%);
     position: absolute;
-    background: linear-gradient(to left, #c9c9c9,#faecec);
+    opacity: 0;
+   /* background: linear-gradient(to left, #c9c9c9,#faecec);
     -webkit-background-clip: text;
-    -webkit-text-fill-color: transparent;
+    -webkit-text-fill-color: transparent;*/
+}
+
+.price{
+    font-size: 40px;
+    color: white;
+    text-align: center;
+    align-items: center;
+    top: 23%;
+    left: 10%;
+    transform: translate(1em,120%);
+    position: absolute;
+    opacity: 0;
+}
+.explaining{
+    position: absolute;
+    color: #ffffff;
+    top: 50%;
+    left: 15%;
+    width: 400px;
+    font-size: 20px;
+
 }
 .menu{
     font-size: 45px;
-    color: white;
+    color: #ffffff;
     text-align: center;
     align-items: center;
     top: 10%;
@@ -63,22 +92,13 @@ span.fade{
     transform: translateY(0px);
 }
 
-.table{
-    height: 30px;
-    width: 400px;
-    background: #631d0c;
-    position: absolute;
-    top: 70vh;
-    left: 50%;
-    transform: skew(-70deg);
-}
 .images{
     height: 50%;
-    width: 50%;
+    width: 40%;
     position: absolute;
     top: 40vh;
-    left: 50%;
-
+    /*left: 50%;*/
+    left: 110%;
 }
 .menuTable{
     background: transparent;
@@ -98,7 +118,7 @@ span.fade{
     width: 48%;
     padding-right: 10px;
     border-right: solid 2px white;
-    transition: all 0.4s ease;
+    transition: all 1s ease;
     transform: translateX(200px);
 }
 .float-left{
@@ -107,13 +127,30 @@ span.fade{
     width: 48%;
     padding-left: 10px;
     border-left: solid 2px white;
-    transition: all 0.4s ease;
+    transition: all 1s ease;
     transform: translateX(-200px);
 }
 .float-right.slide,.float-left.slide{
     opacity: 1;
     transform: translateX(0px);
 }
+
+.tableImage{
+    position: absolute;
+    bottom: 0px;
+    width: 100%;
+    z-index: -1;
+}
+
+.lines {
+    position: absolute;
+    bottom: 15px;
+    height: 10px;
+    width: 0px;
+    left: 50%;
+    background: #ffffff;  
+}
+
 .passTheNext{
     height: 0px;
     width: 0px;
@@ -130,8 +167,11 @@ span.fade{
     0%{
         background-position: 100% 50%;
     }
-    100%{
+    50%{
         background-position: 0 50%;
+    }
+    100%{
+        background-position: 100% 50%;
     }
 }
 
