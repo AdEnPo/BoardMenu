@@ -4,9 +4,11 @@ const section1 = document.getElementById('s1');
 const section2 = document.getElementById('s2');
 const section3 = document.getElementById('s3');
 const section4 = document.getElementById('s4');
+const section5 = document.getElementById('s5');
+
 
 const sElement1 = document.querySelector('div.s1');
-const sElement24 = document.querySelectorAll('div.s2');
+const sElement2 = document.querySelectorAll('div.s2');
 const sElement3 = document.querySelector('div.s3');
 const menuText = document.querySelectorAll('div.s2>h1.menu');
 const menuTable = document.querySelectorAll('.menuTable>tbody');
@@ -15,8 +17,12 @@ const foodImage = document.querySelectorAll('img.images');
 const foodName = document.querySelectorAll('h1.food');
 const price = document.querySelectorAll('h2.price');
 const fooddesc = document.querySelectorAll('p.theFoodIs');
+const carouselSlide = document.querySelector('.carouselSlide');
+const carouselImages = document.querySelectorAll('.carouselSlide img');
+const colParts = document.querySelectorAll('.column');
 
 const TIMEforSCREEN = 5000;
+let sectionNumber=2;
 
 var menusItemsArray = [['Product1',15],['Product2',10],['Product3',5],
                        ['Product4',25],['Product5',20],['Product6',35],
@@ -79,6 +85,21 @@ function menuItems(number){
     },60);
 }
 
+function foodCarousel() {
+    //https://www.youtube.com/watch?v=KcdBOoK3Pfw
+    let carouselCounter = 1;
+    carouselSlide.style.transition = "transform 0.4s ease-in-out";
+    const size = carouselImages[0].clientWidth;
+    var food = setInterval(()=>{
+        carouselSlide.style.transform = 'translateX('+(-size * carouselCounter)+ 'px)';
+        if (carouselImages[carouselCounter].id === 'last') {
+            carouselSlide.style.transform = 'translateX(0px)';
+            clearInterval(food);
+        }
+        carouselCounter++;
+    },1500);
+}
+
 function foodNameInAnimation(number) {
     foodName[number].animate([
         { opacity: 0, top: '11%' },
@@ -132,9 +153,29 @@ function foodInAnimation(number) {
     foodImage[number].style.left = '50%';
 }
 
+function AdviceSec() {
+    let colIndex = 0; 
+    for (let i = 0; i < colParts.length; i++) {
+        colParts[i].style.transform = 'translateY('+((-1)**i*800)+ 'px)';
+        console.log('a');
+    }
+    var advice = setInterval(()=>{
+        //colParts[colIndex].style.top = (((-1)**colIndex)*800)+"px";
+        
+
+        colParts[colIndex].style.transition = "all 0.5s ease-in-out";
+        colParts[colIndex].style.transform = 'translateY('+((-1)**colIndex)+ 'px)';
+        colParts[colIndex].style.opacity = '1';
+
+        if (colIndex+1 == colParts.length) {
+            clearInterval(advice);
+        }
+        colIndex++;
+    },1000);
+}
+AdviceSec()
 foodNameInAnimation(0);
 
-var sectionNumber=2;
 var interval = setInterval(()=>{
     //https://www.w3schools.com/Jsref/met_element_scrollintoview.asp
     switch (sectionNumber) {
@@ -145,6 +186,8 @@ var interval = setInterval(()=>{
         case 2:
             section2.scrollIntoView(true);
             menuAnimation(0);
+            foodCarousel();
+
             break;
         case 3:
             section3.scrollIntoView(true);
@@ -154,11 +197,15 @@ var interval = setInterval(()=>{
             section4.scrollIntoView(true);
             menuAnimation(1);
             break;
+        case 5:
+            section5.scrollIntoView(true);
+            AdviceSec();
+            break;
         default: break;
     }
 
     sectionNumber++;
-    if(sectionNumber>4) sectionNumber=1;
+    if(sectionNumber>5) sectionNumber=1;
 },TIMEforSCREEN);
 
 addEventListener("click",()=>{
