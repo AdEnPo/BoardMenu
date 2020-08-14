@@ -1,7 +1,7 @@
 html, body, *{
     margin: 0px;
     padding: 0px;
-    /*overflow: hidden;*/
+    overflow: hidden;
     overflow-x: hidden;
 }
 
@@ -12,7 +12,7 @@ html, body, *{
     position: relative;
     background: linear-gradient(-45deg, #5A0000 , #940000, #440202,#440202, #940000,#5A0000);
     background-size: 400%, 400%;
-    animation: change 5s infinite ease;
+    animation: s1background 5s infinite ease;
     z-index: -2;
 }
 .s2{
@@ -26,11 +26,14 @@ html, body, *{
 .s3{
     height: 100vh;
     width: 100%;
-    position: relative;
-    background: #940000 ;
+    position: relative;   
+    background: linear-gradient(90deg, #5A0000, #940000,#5A0000,#940000,#970808);
+    background-size: 400%, 100%;
+    animation: s4background 7s infinite ;
     z-index: -2;
-
 }
+
+/*s1 and s3's elements*/
 .food{
     font-size: 150px;
     color: white;
@@ -45,7 +48,6 @@ html, body, *{
     -webkit-background-clip: text;
     -webkit-text-fill-color: transparent;*/
 }
-
 .price{
     font-size: 60px;
     color: white;
@@ -71,7 +73,22 @@ html, body, *{
     font-style: italic;
     opacity: 0;
 }
+.images{
+    height: 50%;
+    width: 40%;
+    position: absolute;
+    top: 40vh;
+    /*left: 50%;*/
+    left: 110%;
+}
+.tableImage{
+    position: absolute;
+    bottom: 0px;
+    width: 100%;
+    z-index: -1;
+}
 
+/*s2's elements*/
 .menu{
     font-size: 100px;
     color: #ffffff;
@@ -95,15 +112,6 @@ span.fade{
     opacity: 1;
     transform: translateY(0px);
 }
-
-.images{
-    height: 50%;
-    width: 40%;
-    position: absolute;
-    top: 40vh;
-    /*left: 50%;*/
-    left: 110%;
-}
 .menuTable{
     background: transparent;
     border-collapse: collapse;
@@ -122,7 +130,7 @@ span.fade{
     width: 65%;
     padding-left: 20px;
     padding-bottom: 20px;
-    border-right: solid 2px white;
+    border-right: solid 5px white;
     transition: all 1s ease;
     transform: translateX(200px);
 }
@@ -133,7 +141,7 @@ span.fade{
     padding-right: 30px;
     padding-left: 10px;
     padding-bottom: 20px;
-    border-left: solid 2px white;
+    border-left: solid 5px white;
     transition: all 1s ease;
     transform: translateX(-200px);
 }
@@ -150,11 +158,6 @@ span.fade{
     box-shadow: -10px 1px 10px #000000d3;
     z-index: 0;
 }
-.foodCarousel{
-    height: 100%;
-    width: auto;
-    max-width: 1440px;
-}
 .carousel-container{
     z-index: -1;
     height: 100%;
@@ -165,14 +168,13 @@ span.fade{
     display: flex;
     height: 100%;
 }
-
-
-.tableImage{
-    position: absolute;
-    bottom: 0px;
-    width: 100%;
-    z-index: -1;
+.foodCarousel{
+    height: 100%;
+    width: auto;
+    max-width: 1440px;
 }
+
+/*s4's elements*/
 .advice{
     padding: 0px;
     width: 100%;
@@ -234,49 +236,19 @@ span.fade{
     color: #ffffff;
     text-align: center;
 }
-.passTheNext{
-    height: 0px;
-    width: 0px;
-    background-color: #000000;
-    animation: getBig 1s;
-    top: 0px;
-    left: 0px;
-    position: fixed;
-    z-index: 1;
-}
 
-@keyframes change{
+@keyframes s1background{
     /*https://www.youtube.com/watch?v=fBRzD6dwJfw*/
-    0%{
-        background-position: 100% 50%;
-    }
-    50%{
-        background-position: 0 50%;
-    }
-    100%{
-        background-position: 100% 50%;
-    }
+      0%{ background-position: 100% 50%; }
+     50%{ background-position: 0 50%; }
+    100%{ background-position: 100% 50%; }
 }
 
-@keyframes getBig{
-    0%{
-        top: 50%;
-        left: 50%;
-        height: 1px;
-        width: 1px;
-    }
-    50%{
-        top: -10px;
-        left: -15px;
-        height: 102vh;
-        width: 102%;
-        opacity: 1;
-    }
-    100%{
-        top: 50%;
-        left: 50%;
-        height: 0px;
-        width: 0px;
-        opacity: 0;
-    }
+@keyframes s4background{
+      0%{ background-position: 0% 50%;}
+     10%{ background-position: 0% 50%;}
+     40%{ background-position: 100% 50%;}
+     60%{ background-position: 100% 50%;}
+     90%{ background-position: 0% 50%;}
+    100%{ background-position: 0% 50%; }
 }
